@@ -33,13 +33,13 @@ capture_server_pcap() {
 set timeout 90
 spawn ssh -o StrictHostKeyChecking=no versa@${ip}
 expect "password:"
-send "Versa@123!!\r"
+send "<PASSWORD>\r"
 expect "$ "
 
 send "echo 'Starting PCAP capture on ${hostname}...'\\r"
 expect "$ "
 
-send "echo 'Versa@123!!' | sudo -S docker run --rm -v /dev/infiniband:/dev/infiniband -v /tmp:/tmp --net=host --privileged mellanox/tcpdump-rdma tcpdump -i ${device} -c 100 -nn -w /tmp/${pcap_file} 'udp'\\r"
+send "echo '<PASSWORD>' | sudo -S docker run --rm -v /dev/infiniband:/dev/infiniband -v /tmp:/tmp --net=host --privileged mellanox/tcpdump-rdma tcpdump -i ${device} -c 100 -nn -w /tmp/${pcap_file} 'udp'\\r"
 expect {
     "100 packets captured" {
         puts "\\nCapture complete for ${hostname}"
@@ -64,7 +64,7 @@ EXPECT_EOF
 set timeout 30
 spawn scp -o StrictHostKeyChecking=no versa@${ip}:/tmp/${pcap_file} ${OUTPUT_DIR}/
 expect "password:"
-send "Versa@123!!\r"
+send "<PASSWORD>\r"
 expect eof
 SCP_EOF
 
@@ -73,7 +73,7 @@ SCP_EOF
 set timeout 10
 spawn ssh -o StrictHostKeyChecking=no versa@${ip}
 expect "password:"
-send "Versa@123!!\r"
+send "<PASSWORD>\r"
 expect "$ "
 send "rm -f /tmp/${pcap_file}\\r"
 expect "$ "

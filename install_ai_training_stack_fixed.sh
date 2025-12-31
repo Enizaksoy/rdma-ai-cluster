@@ -21,19 +21,19 @@ install_on_server() {
 
     echo "=== Installing on $hostname ($ip) ==="
 
-    sshpass -p 'Versa@123!!' ssh -o StrictHostKeyChecking=no versa@${ip} << 'INSTALL_EOF'
+    sshpass -p '<PASSWORD>' ssh -o StrictHostKeyChecking=no versa@${ip} << 'INSTALL_EOF'
 
 # Update package list
-echo 'Versa@123!!' | sudo -S apt update
+echo '<PASSWORD>' | sudo -S apt update
 
 # Install Python and pip
-echo 'Versa@123!!' | sudo -S apt install -y python3 python3-pip python3-dev python3-venv
+echo '<PASSWORD>' | sudo -S apt install -y python3 python3-pip python3-dev python3-venv
 
 # Install OpenMPI with UCX (RDMA support)
-echo 'Versa@123!!' | sudo -S apt install -y openmpi-bin libopenmpi-dev
+echo '<PASSWORD>' | sudo -S apt install -y openmpi-bin libopenmpi-dev
 
 # Install build tools for Horovod
-echo 'Versa@123!!' | sudo -S apt install -y build-essential cmake
+echo '<PASSWORD>' | sudo -S apt install -y build-essential cmake
 
 # Install PyTorch (CPU version) - using --break-system-packages for lab environment
 pip3 install --break-system-packages torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu

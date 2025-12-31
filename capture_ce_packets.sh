@@ -30,14 +30,14 @@ capture_ce_packets() {
 set timeout 120
 spawn ssh -o StrictHostKeyChecking=no versa@${ip}
 expect "password:"
-send "Versa@123!!\r"
+send "<PASSWORD>\r"
 expect "$ "
 
 send "echo 'Capturing 500 packets on ${hostname}...'\\r"
 expect "$ "
 
 # Capture 500 packets (more chances to catch CE-marked packets)
-send "echo 'Versa@123!!' | sudo -S docker run --rm -v /dev/infiniband:/dev/infiniband -v /tmp:/tmp --net=host --privileged mellanox/tcpdump-rdma tcpdump -i ${device} -c 500 -nn -w /tmp/${pcap_file} 'udp'\\r"
+send "echo '<PASSWORD>' | sudo -S docker run --rm -v /dev/infiniband:/dev/infiniband -v /tmp:/tmp --net=host --privileged mellanox/tcpdump-rdma tcpdump -i ${device} -c 500 -nn -w /tmp/${pcap_file} 'udp'\\r"
 expect {
     "500 packets captured" {
         puts "\\nCapture complete for ${hostname}"
@@ -67,7 +67,7 @@ set timeout 45
 spawn scp -o StrictHostKeyChecking=no versa@${ip}:/tmp/${pcap_file} ${OUTPUT_DIR}/
 expect {
     "password:" {
-        send "Versa@123!!\r"
+        send "<PASSWORD>\r"
         expect eof
     }
     "No such file" {
@@ -84,7 +84,7 @@ SCP_EOF
 set timeout 10
 spawn ssh -o StrictHostKeyChecking=no versa@${ip}
 expect "password:"
-send "Versa@123!!\r"
+send "<PASSWORD>\r"
 expect "$ "
 send "rm -f /tmp/${pcap_file}\\r"
 expect "$ "

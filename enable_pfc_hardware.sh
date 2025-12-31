@@ -30,7 +30,7 @@ set timeout 30
 spawn ssh -o StrictHostKeyChecking=no versa@${ip} "${cmd}"
 expect {
     "password:" {
-        send "Versa@123!!\r"
+        send "<PASSWORD>\r"
         exp_continue
     }
     eof
@@ -50,15 +50,15 @@ for server_entry in "${SERVERS[@]}"; do
 
     # Enable RX/TX pause at hardware level
     echo -e "${CYAN}[1/3]${NC} Enabling RX pause..."
-    run_ssh_sudo "$ip" "echo 'Versa@123!!' | sudo -S ethtool -A ens192 rx on" > /dev/null 2>&1
+    run_ssh_sudo "$ip" "echo '<PASSWORD>' | sudo -S ethtool -A ens192 rx on" > /dev/null 2>&1
     echo -e "${GREEN}✓${NC}"
 
     echo -e "${CYAN}[2/3]${NC} Enabling TX pause..."
-    run_ssh_sudo "$ip" "echo 'Versa@123!!' | sudo -S ethtool -A ens192 tx on" > /dev/null 2>&1
+    run_ssh_sudo "$ip" "echo '<PASSWORD>' | sudo -S ethtool -A ens192 tx on" > /dev/null 2>&1
     echo -e "${GREEN}✓${NC}"
 
     echo -e "${CYAN}[3/3]${NC} Verifying..."
-    run_ssh_sudo "$ip" "echo 'Versa@123!!' | sudo -S ethtool -a ens192" 2>&1 | grep -E "RX:|TX:"
+    run_ssh_sudo "$ip" "echo '<PASSWORD>' | sudo -S ethtool -a ens192" 2>&1 | grep -E "RX:|TX:"
 
     echo ""
 done

@@ -17,7 +17,7 @@ NC='\033[0m'
 # Configuration
 SWITCH_IP="192.168.50.229"
 SWITCH_USER="admin"
-SWITCH_PASS="Versa@123!!"
+SWITCH_PASS="<PASSWORD>"
 DURATION=${1:-60}  # Default 60 seconds
 SAMPLE_INTERVAL=5   # Sample every 5 seconds
 
@@ -57,7 +57,7 @@ set cmd [lindex $argv 1]
 set timeout 10
 spawn ssh -o StrictHostKeyChecking=no admin@$ip
 expect "Password:"
-send "Versa@123!!\r"
+send "<PASSWORD>\r"
 expect "#"
 send "$cmd\r"
 expect "#"
@@ -99,7 +99,7 @@ set timeout 120
 spawn ssh -o StrictHostKeyChecking=no versa@$ip "$cmd"
 expect {
     "password:" {
-        send "Versa@123!!\r"
+        send "<PASSWORD>\r"
         exp_continue
     }
     eof

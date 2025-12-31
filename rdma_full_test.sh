@@ -40,7 +40,7 @@ declare -A SERVERS_RDMA=(
 VLAN251_SERVERS=("ubunturdma1" "ubunturdma3" "ubunturdma6" "ubunturdma8")
 VLAN250_SERVERS=("ubunturdma2" "ubunturdma4" "ubunturdma5" "ubunturdma7")
 
-PASSWORD="Versa@123!!"
+PASSWORD="<PASSWORD>"
 OUTPUT_FILE="/mnt/c/Users/eniza/Documents/claudechats/rdma_test_results_$(date +%Y%m%d_%H%M%S).txt"
 
 # Create expect script helper
@@ -53,7 +53,7 @@ set timeout 30
 spawn ssh -o StrictHostKeyChecking=no versa@$ip "$cmd"
 expect {
     "password:" {
-        send "Versa@123!!\r"
+        send "<PASSWORD>\r"
         exp_continue
     }
     eof

@@ -11,7 +11,7 @@ requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
 
 SWITCH_IP = "192.168.50.229"
 USERNAME = "admin"
-PASSWORD = "Versa@123!!"
+PASSWORD = "<PASSWORD>"
 TEST_INTERFACE = "Ethernet1/2/2"
 
 def send_nxapi_command(command, output_format="json"):

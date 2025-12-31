@@ -31,7 +31,7 @@ set timeout 60
 spawn ssh -o StrictHostKeyChecking=no versa@${ip} "${cmd}"
 expect {
     "password:" {
-        send "Versa@123!!\r"
+        send "<PASSWORD>\r"
         exp_continue
     }
     eof
@@ -52,27 +52,27 @@ for server_entry in "${SERVERS[@]}"; do
     echo ""
 
     echo -e "${CYAN}[1/6]${NC} Installing lldpad..."
-    run_ssh_sudo "$ip" "echo 'Versa@123!!' | sudo -S apt-get update -qq && echo 'Versa@123!!' | sudo -S apt-get install -y lldpad" > /dev/null 2>&1
+    run_ssh_sudo "$ip" "echo '<PASSWORD>' | sudo -S apt-get update -qq && echo '<PASSWORD>' | sudo -S apt-get install -y lldpad" > /dev/null 2>&1
     echo -e "${GREEN}✓${NC}"
 
     echo -e "${CYAN}[2/6]${NC} Starting lldpad service..."
-    run_ssh_sudo "$ip" "echo 'Versa@123!!' | sudo -S systemctl start lldpad && echo 'Versa@123!!' | sudo -S systemctl enable lldpad" > /dev/null 2>&1
+    run_ssh_sudo "$ip" "echo '<PASSWORD>' | sudo -S systemctl start lldpad && echo '<PASSWORD>' | sudo -S systemctl enable lldpad" > /dev/null 2>&1
     echo -e "${GREEN}✓${NC}"
 
     echo -e "${CYAN}[3/6]${NC} Enabling PFC TX on ens192..."
-    run_ssh_sudo "$ip" "echo 'Versa@123!!' | sudo -S lldptool -T -i ens192 -V PFC enableTx=yes" > /dev/null 2>&1
+    run_ssh_sudo "$ip" "echo '<PASSWORD>' | sudo -S lldptool -T -i ens192 -V PFC enableTx=yes" > /dev/null 2>&1
     echo -e "${GREEN}✓${NC}"
 
     echo -e "${CYAN}[4/6]${NC} Setting PFC priority 3 (RoCE)..."
-    run_ssh_sudo "$ip" "echo 'Versa@123!!' | sudo -S lldptool -i ens192 -T -V PFC -c enabled=0,0,0,1,0,0,0,0" > /dev/null 2>&1
+    run_ssh_sudo "$ip" "echo '<PASSWORD>' | sudo -S lldptool -i ens192 -T -V PFC -c enabled=0,0,0,1,0,0,0,0" > /dev/null 2>&1
     echo -e "${GREEN}✓${NC}"
 
     echo -e "${CYAN}[5/6]${NC} Configuring LLDP admin status..."
-    run_ssh_sudo "$ip" "echo 'Versa@123!!' | sudo -S lldptool set-lldp -i ens192 adminStatus=rxtx" > /dev/null 2>&1
+    run_ssh_sudo "$ip" "echo '<PASSWORD>' | sudo -S lldptool set-lldp -i ens192 adminStatus=rxtx" > /dev/null 2>&1
     echo -e "${GREEN}✓${NC}"
 
     echo -e "${CYAN}[6/6]${NC} Verifying configuration..."
-    run_ssh_sudo "$ip" "echo 'Versa@123!!' | sudo -S ethtool -a ens192" 2>&1 | grep -E "RX:|TX:"
+    run_ssh_sudo "$ip" "echo '<PASSWORD>' | sudo -S ethtool -a ens192" 2>&1 | grep -E "RX:|TX:"
 
     echo -e "${GREEN}✓ $hostname complete!${NC}"
 done

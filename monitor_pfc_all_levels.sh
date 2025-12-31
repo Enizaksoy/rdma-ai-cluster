@@ -15,9 +15,9 @@ NC='\033[0m'
 
 DURATION=${1:-30}
 ESXI1_IP="192.168.50.152"
-ESXI1_PASS="Versa@123!!"
+ESXI1_PASS="<PASSWORD>"
 SWITCH_IP="192.168.50.229"
-SWITCH_PASS="Versa@123!!"
+SWITCH_PASS="<PASSWORD>"
 
 echo -e "${BLUE}========================================${NC}"
 echo "Multi-Level PFC Monitoring"

@@ -17,7 +17,7 @@ for server_info in "${servers[@]}"; do
 
     echo "=== $hostname ($ip) ==="
 
-    sshpass -p 'Versa@123!!' ssh -o StrictHostKeyChecking=no versa@${ip} \
+    sshpass -p '<PASSWORD>' ssh -o StrictHostKeyChecking=no versa@${ip} \
         "rdma statistic show link ${device}/1 2>/dev/null | grep -E 'rp_cnp_handled|rp_cnp_ignored'" 2>&1 | grep -E "rp_cnp|$hostname"
 
     echo ""

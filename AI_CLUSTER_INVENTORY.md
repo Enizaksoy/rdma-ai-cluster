@@ -3,7 +3,7 @@
 **Date:** 2025-12-28
 **Cluster Name:** RDMA AI Cluster
 **Total Servers:** 8
-**Credentials:** versa / Versa@123!!
+**Credentials:** versa / <PASSWORD>
 
 ---
 

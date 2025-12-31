@@ -25,10 +25,10 @@ capture_5sec() {
 set timeout 20
 spawn ssh -o StrictHostKeyChecking=no versa@${ip}
 expect "password:"
-send "Versa@123!!\r"
+send "<PASSWORD>\r"
 expect "$ "
 
-send "echo 'Versa@123!!' | sudo -S timeout 5 docker run --rm -v /dev/infiniband:/dev/infiniband -v /tmp:/tmp --net=host --privileged mellanox/tcpdump-rdma tcpdump -i ${device} -nn -w /tmp/${pcap_file} 'udp'\\r"
+send "echo '<PASSWORD>' | sudo -S timeout 5 docker run --rm -v /dev/infiniband:/dev/infiniband -v /tmp:/tmp --net=host --privileged mellanox/tcpdump-rdma tcpdump -i ${device} -nn -w /tmp/${pcap_file} 'udp'\\r"
 expect {
     "packets captured" {
         expect "$ "
@@ -47,8 +47,8 @@ expect eof
 EXPECT_EOF
 
     echo "Transferring ${pcap_file}..."
-    sshpass -p 'Versa@123!!' scp -o StrictHostKeyChecking=no versa@${ip}:/tmp/${pcap_file} ${OUTPUT_DIR}/ 2>&1
-    sshpass -p 'Versa@123!!' ssh -o StrictHostKeyChecking=no versa@${ip} "rm -f /tmp/${pcap_file}" 2>&1
+    sshpass -p '<PASSWORD>' scp -o StrictHostKeyChecking=no versa@${ip}:/tmp/${pcap_file} ${OUTPUT_DIR}/ 2>&1
+    sshpass -p '<PASSWORD>' ssh -o StrictHostKeyChecking=no versa@${ip} "rm -f /tmp/${pcap_file}" 2>&1
 
     echo "Done: $hostname"
     echo ""

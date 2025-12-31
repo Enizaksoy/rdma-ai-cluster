@@ -9,7 +9,7 @@
 set timeout 30
 spawn ssh -o StrictHostKeyChecking=no admin@192.168.50.229
 expect "Password:"
-send "Versa@123!!\r"
+send "<PASSWORD>\r"
 expect "#"
 
 puts "\n=== Enabling Flow Control on RDMA Interfaces ==="

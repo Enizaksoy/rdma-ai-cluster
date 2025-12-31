@@ -456,7 +456,7 @@ sudo mount master_ip:/mnt/shared /mnt/shared
 
 ### Credentials
 - **Username:** versa
-- **Password:** Versa@123!!
+- **Password:** <PASSWORD>
 
 ---
 

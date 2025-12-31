@@ -14,7 +14,7 @@ NC='\033[0m'
 
 ESXI_IP="192.168.50.152"
 ESXI_USER="root"
-ESXI_PASS="Versa@123!!"
+ESXI_PASS="<PASSWORD>"
 
 echo -e "${BLUE}========================================${NC}"
 echo "ESXi Host 1 - Enable PFC on RDMA NICs"
@@ -31,7 +31,7 @@ set timeout 30
 spawn ssh -o StrictHostKeyChecking=no root@192.168.50.152
 expect {
     "Password:" {
-        send "Versa@123!!\r"
+        send "<PASSWORD>\r"
         expect "~]"
     }
 }

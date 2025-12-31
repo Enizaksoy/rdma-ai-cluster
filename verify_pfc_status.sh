@@ -31,7 +31,7 @@ set timeout 10
 spawn ssh -o StrictHostKeyChecking=no versa@${SERVER_IP} "${cmd}"
 expect {
     "password:" {
-        send "Versa@123!!\r"
+        send "<PASSWORD>\r"
         exp_continue
     }
     eof

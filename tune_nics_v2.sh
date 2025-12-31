@@ -27,7 +27,7 @@ set timeout 30
 
 spawn ssh -o StrictHostKeyChecking=no versa@$ip
 expect "password:"
-send "Versa@123!!\r"
+send "<PASSWORD>\r"
 expect "$ "
 
 # Check current settings
@@ -37,7 +37,7 @@ send "rdma statistic show 2>/dev/null | head -5\r"
 expect "$ "
 
 # Enable TCP ECN
-send "echo 'Versa@123!!' | sudo -S sysctl -w net.ipv4.tcp_ecn=1\r"
+send "echo '<PASSWORD>' | sudo -S sysctl -w net.ipv4.tcp_ecn=1\r"
 expect "$ "
 
 # Find MST device
@@ -45,9 +45,9 @@ send "ls /dev/mst/ 2>/dev/null\r"
 expect "$ "
 
 # Query current mlxconfig settings
-send "echo 'Versa@123!!' | sudo -S mst start 2>&1\r"
+send "echo '<PASSWORD>' | sudo -S mst start 2>&1\r"
 expect "$ "
-send "echo 'Versa@123!!' | sudo -S mlxconfig -d /dev/mst/mt*_pciconf0 q 2>&1 | grep -E 'ROCE_CC|PFC|LOSSLESS' | head -10\r"
+send "echo '<PASSWORD>' | sudo -S mlxconfig -d /dev/mst/mt*_pciconf0 q 2>&1 | grep -E 'ROCE_CC|PFC|LOSSLESS' | head -10\r"
 expect "$ "
 
 send "echo '✅ Tuning complete for $hostname'\r"

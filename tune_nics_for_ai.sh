@@ -24,7 +24,7 @@ tune_nic() {
 
     echo "=== Tuning $hostname ($ip) ==="
 
-    sshpass -p 'Versa@123!!' ssh -o StrictHostKeyChecking=no versa@${ip} << 'TUNE_EOF'
+    sshpass -p '<PASSWORD>' ssh -o StrictHostKeyChecking=no versa@${ip} << 'TUNE_EOF'
 
 echo "1. Current ECN/DCQCN Settings:"
 sudo rdma system show netns

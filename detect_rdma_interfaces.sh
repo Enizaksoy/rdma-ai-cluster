@@ -39,7 +39,7 @@ set timeout 10
 spawn ssh -o StrictHostKeyChecking=no versa@${ip} "ip addr show | grep -E 'ens[0-9]+|192.168.(250|251)'"
 expect {
     "password:" {
-        send "Versa@123!!\r"
+        send "<PASSWORD>\r"
         exp_continue
     }
     eof

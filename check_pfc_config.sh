@@ -12,7 +12,7 @@ cat > /tmp/switch_check.exp << 'EOF'
 set timeout 30
 spawn ssh -o StrictHostKeyChecking=no admin@192.168.50.229
 expect "Password:"
-send "Versa@123!!\r"
+send "<PASSWORD>\r"
 expect "#"
 
 # Check PFC configuration

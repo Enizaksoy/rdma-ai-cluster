@@ -26,16 +26,16 @@ install_docker() {
 set timeout 180
 spawn ssh -o StrictHostKeyChecking=no versa@${ip}
 expect "password:"
-send "Versa@123!!\r"
+send "<PASSWORD>\r"
 expect "$ "
 
 send "echo 'Starting Docker installation...'\r"
 expect "$ "
 
-send "echo 'Versa@123!!' | sudo -S apt update -y\r"
+send "echo '<PASSWORD>' | sudo -S apt update -y\r"
 expect "$ "
 
-send "echo 'Versa@123!!' | sudo -S apt install -y docker.io\r"
+send "echo '<PASSWORD>' | sudo -S apt install -y docker.io\r"
 expect {
     "Do you want to continue?" {
         send "Y\r"
@@ -45,13 +45,13 @@ expect {
     timeout { puts "\nInstallation timeout"; expect "$ " }
 }
 
-send "echo 'Versa@123!!' | sudo -S systemctl start docker\r"
+send "echo '<PASSWORD>' | sudo -S systemctl start docker\r"
 expect "$ "
 
-send "echo 'Versa@123!!' | sudo -S systemctl enable docker\r"
+send "echo '<PASSWORD>' | sudo -S systemctl enable docker\r"
 expect "$ "
 
-send "echo 'Versa@123!!' | sudo -S usermod -aG docker versa\r"
+send "echo '<PASSWORD>' | sudo -S usermod -aG docker versa\r"
 expect "$ "
 
 send "sudo docker --version\r"

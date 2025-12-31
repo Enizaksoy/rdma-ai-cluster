@@ -19,7 +19,7 @@ app = Flask(__name__)
 # Config
 SWITCH_IP = "192.168.50.229"
 USERNAME = "admin"
-PASSWORD = "Versa@123!!"
+PASSWORD = "<PASSWORD>"
 
 # QoS Group Colors
 QOS_COLORS = {

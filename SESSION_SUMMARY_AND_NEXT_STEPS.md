@@ -47,7 +47,7 @@ Successfully installed and configured on all servers:
 
 ### 3. **Configured PFC on ESXi Host 1**
 
-**ESXi Host 1:** 192.168.50.152 (Password: Versa@123!!)
+**ESXi Host 1:** 192.168.50.152 (Password: <PASSWORD>)
 
 ```bash
 ✅ vmnic3: Pause RX=true, TX=true
@@ -64,7 +64,7 @@ Serves: ubunturdma1, ubunturdma2, ubunturdma3, ubunturdma4
 
 ### 4. **User Configured PFC on ESXi Host 2**
 
-**ESXi Host 2:** 192.168.50.32 (Password: Versa@123!! - changed from Elma12743)
+**ESXi Host 2:** 192.168.50.32 (Password: <PASSWORD> - changed from Elma12743)
 
 ```bash
 ✅ vmnic5: Configured (user did manually)
@@ -193,15 +193,15 @@ Potential issues to investigate:
 ## 🔑 Important Credentials
 
 **ESXi Hosts:**
-- ESXi Host 1: 192.168.50.152, root / Versa@123!!
-- ESXi Host 2: 192.168.50.32, root / Versa@123!! (changed today)
+- ESXi Host 1: 192.168.50.152, root / <PASSWORD>
+- ESXi Host 2: 192.168.50.32, root / <PASSWORD> (changed today)
 
 **Ubuntu Servers:**
-- All servers: versa / Versa@123!!
+- All servers: versa / <PASSWORD>
 
 **Cisco Switch:**
 - IP: 192.168.50.229
-- User: admin / Versa@123!!
+- User: admin / <PASSWORD>
 
 ---
 

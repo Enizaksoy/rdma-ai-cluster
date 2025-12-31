@@ -24,7 +24,7 @@ for server_info in "${servers[@]}"; do
 set timeout 15
 spawn ssh -o StrictHostKeyChecking=no versa@${ip}
 expect "password:"
-send "Versa@123!!\r"
+send "<PASSWORD>\r"
 expect "$ "
 
 send "rdma statistic show link ${device}/1 2>/dev/null | grep -Ei 'np_ecn_marked_roce_packets|np_cnp_sent|rp_cnp_handled' || echo 'No ECN stats available'\r"

@@ -21,19 +21,19 @@ install_on_server() {
 
     echo "=== Installing on $hostname ($ip) ==="
 
-    sshpass -p 'Versa@123!!' ssh -o StrictHostKeyChecking=no versa@${ip} << 'INSTALL_EOF'
+    sshpass -p '<PASSWORD>' ssh -o StrictHostKeyChecking=no versa@${ip} << 'INSTALL_EOF'
 
 # Update package list
-echo 'Versa@123!!' | sudo -S apt update
+echo '<PASSWORD>' | sudo -S apt update
 
 # Install Python and pip
-echo 'Versa@123!!' | sudo -S apt install -y python3 python3-pip python3-dev
+echo '<PASSWORD>' | sudo -S apt install -y python3 python3-pip python3-dev
 
 # Install OpenMPI with UCX (RDMA support)
-echo 'Versa@123!!' | sudo -S apt install -y openmpi-bin libopenmpi-dev
+echo '<PASSWORD>' | sudo -S apt install -y openmpi-bin libopenmpi-dev
 
 # Install UCX for RDMA
-echo 'Versa@123!!' | sudo -S apt install -y ucx libucx-dev
+echo '<PASSWORD>' | sudo -S apt install -y ucx libucx-dev
 
 # Install PyTorch (CPU version)
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu

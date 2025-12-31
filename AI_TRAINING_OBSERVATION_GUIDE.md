@@ -39,7 +39,7 @@ bash install_ai_training_stack.sh
 # Copy the training script to all 8 servers
 for ip in 192.168.11.152 192.168.11.153 192.168.11.154 192.168.11.155 \
           192.168.11.107 192.168.12.51 192.168.20.150 192.168.30.94; do
-    sshpass -p 'Versa@123!!' scp -o StrictHostKeyChecking=no \
+    sshpass -p '<PASSWORD>' scp -o StrictHostKeyChecking=no \
         train_distributed.py versa@${ip}:~/
 done
 ```
@@ -59,7 +59,7 @@ ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
 # Copy to all servers (including itself)
 for ip in 192.168.11.152 192.168.11.153 192.168.11.154 192.168.11.155 \
           192.168.11.107 192.168.12.51 192.168.20.150 192.168.30.94; do
-    sshpass -p 'Versa@123!!' ssh-copy-id -o StrictHostKeyChecking=no versa@${ip}
+    sshpass -p '<PASSWORD>' ssh-copy-id -o StrictHostKeyChecking=no versa@${ip}
 done
 ```
 
@@ -130,7 +130,7 @@ chmod +x ~/run_training.sh
 ### Terminal 1: Switch Queue Monitor (Drops & ECN)
 
 ```bash
-watch -n 1 'sshpass -p "Versa@123!!" ssh admin@192.168.50.229 "show queuing interface ethernet1/1/1" | grep -E "Ingress MMU Drop|WRED Drop|Tx Pkts|QOS GROUP 3"'
+watch -n 1 'sshpass -p "<PASSWORD>" ssh admin@192.168.50.229 "show queuing interface ethernet1/1/1" | grep -E "Ingress MMU Drop|WRED Drop|Tx Pkts|QOS GROUP 3"'
 ```
 
 **What to watch:**
@@ -143,7 +143,7 @@ watch -n 1 'sshpass -p "Versa@123!!" ssh admin@192.168.50.229 "show queuing inte
 ### Terminal 2: Switch PFC Activity
 
 ```bash
-watch -n 1 'sshpass -p "Versa@123!!" ssh admin@192.168.50.229 "show interface priority-flow-control | grep -E \"Ethernet1/1|ii1/1\" | head -20"'
+watch -n 1 'sshpass -p "<PASSWORD>" ssh admin@192.168.50.229 "show interface priority-flow-control | grep -E \"Ethernet1/1|ii1/1\" | head -20"'
 ```
 
 **What to watch:**
@@ -155,7 +155,7 @@ watch -n 1 'sshpass -p "Versa@123!!" ssh admin@192.168.50.229 "show interface pr
 ### Terminal 3: Server RDMA/CNP Statistics
 
 ```bash
-watch -n 1 'sshpass -p "Versa@123!!" ssh versa@192.168.11.107 "rdma statistic show link rocep11s0/1 2>/dev/null | grep -E \"cnp|ecn\""'
+watch -n 1 'sshpass -p "<PASSWORD>" ssh versa@192.168.11.107 "rdma statistic show link rocep11s0/1 2>/dev/null | grep -E \"cnp|ecn\""'
 ```
 
 **What to watch:**
@@ -336,11 +336,11 @@ Training will gracefully stop on all servers.
 
 ```bash
 # Switch - check total drops
-sshpass -p "Versa@123!!" ssh admin@192.168.50.229 \
+sshpass -p "<PASSWORD>" ssh admin@192.168.50.229 \
     "show queuing interface ethernet1/1/1" | grep "Ingress MMU Drop"
 
 # Server - check CNP activity
-sshpass -p "Versa@123!!" ssh versa@192.168.11.107 \
+sshpass -p "<PASSWORD>" ssh versa@192.168.11.107 \
     "rdma statistic show link rocep11s0/1" | grep -E "cnp|ecn"
 ```
 

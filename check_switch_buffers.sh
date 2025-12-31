@@ -5,7 +5,7 @@ echo ""
 
 SWITCH_IP="192.168.50.229"
 SWITCH_USER="admin"
-SWITCH_PASS="Versa@123!!"
+SWITCH_PASS="<PASSWORD>"
 
 echo "=== 1. System QoS Configuration ==="
 sshpass -p "${SWITCH_PASS}" ssh -o StrictHostKeyChecking=no ${SWITCH_USER}@${SWITCH_IP} "show system qos" 2>&1

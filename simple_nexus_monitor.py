@@ -19,7 +19,7 @@ app = Flask(__name__)
 # Config
 SWITCH_IP = "192.168.50.229"
 USERNAME = "admin"
-PASSWORD = "Versa@123!!"
+PASSWORD = "<PASSWORD>"
 INTERFACES = [
     "Ethernet1/1/1",
     "Ethernet1/1/2",

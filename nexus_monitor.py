@@ -253,15 +253,15 @@ def main():
         epilog="""
 Examples:
   # Monitor specific interfaces
-  python3 nexus_monitor.py --host 192.168.50.229 --user admin --password 'Versa@123!!' \\
+  python3 nexus_monitor.py --host 192.168.50.229 --user admin --password '<PASSWORD>' \\
     --interfaces Ethernet1/1/1-4 Ethernet1/2/1-4
 
   # Monitor with 2 second interval
-  python3 nexus_monitor.py --host 192.168.50.229 --user admin --password 'Versa@123!!' \\
+  python3 nexus_monitor.py --host 192.168.50.229 --user admin --password '<PASSWORD>' \\
     --interfaces Ethernet1/1/1-4 --interval 2
 
   # Save output to file
-  python3 nexus_monitor.py --host 192.168.50.229 --user admin --password 'Versa@123!!' \\
+  python3 nexus_monitor.py --host 192.168.50.229 --user admin --password '<PASSWORD>' \\
     --interfaces Ethernet1/1/1-4 --output nexus_stats.log
         """
     )

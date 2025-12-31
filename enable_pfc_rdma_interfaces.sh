@@ -33,7 +33,7 @@ set timeout 60
 spawn ssh -o StrictHostKeyChecking=no versa@${ip} "${cmd}"
 expect {
     "password:" {
-        send "Versa@123!!\r"
+        send "<PASSWORD>\r"
         exp_continue
     }
     eof
@@ -61,37 +61,37 @@ for server_entry in "${SERVERS[@]}"; do
     echo ""
     echo -e "${CYAN}[1/6]${NC} Installing lldpad..."
     echo -e "${YELLOW}CMD: sudo apt-get install -y lldpad${NC}"
-    run_ssh_sudo "$mgmt_ip" "echo 'Versa@123!!' | sudo -S apt-get update -qq && echo 'Versa@123!!' | sudo -S apt-get install -y lldpad" > /dev/null 2>&1
+    run_ssh_sudo "$mgmt_ip" "echo '<PASSWORD>' | sudo -S apt-get update -qq && echo '<PASSWORD>' | sudo -S apt-get install -y lldpad" > /dev/null 2>&1
     echo -e "${GREEN}✓${NC}"
 
     echo -e "${CYAN}[2/6]${NC} Starting lldpad service..."
     echo -e "${YELLOW}CMD: sudo systemctl start lldpad${NC}"
-    run_ssh_sudo "$mgmt_ip" "echo 'Versa@123!!' | sudo -S systemctl start lldpad && echo 'Versa@123!!' | sudo -S systemctl enable lldpad" > /dev/null 2>&1
+    run_ssh_sudo "$mgmt_ip" "echo '<PASSWORD>' | sudo -S systemctl start lldpad && echo '<PASSWORD>' | sudo -S systemctl enable lldpad" > /dev/null 2>&1
     echo -e "${GREEN}✓${NC}"
 
     echo -e "${CYAN}[3/6]${NC} Enabling PFC TX on $rdma_iface..."
     echo -e "${YELLOW}CMD: sudo lldptool -T -i $rdma_iface -V PFC enableTx=yes${NC}"
-    run_ssh_sudo "$mgmt_ip" "echo 'Versa@123!!' | sudo -S lldptool -T -i $rdma_iface -V PFC enableTx=yes" > /dev/null 2>&1
+    run_ssh_sudo "$mgmt_ip" "echo '<PASSWORD>' | sudo -S lldptool -T -i $rdma_iface -V PFC enableTx=yes" > /dev/null 2>&1
     echo -e "${GREEN}✓${NC}"
 
     echo -e "${CYAN}[4/6]${NC} Setting PFC priority 3 (RoCE)..."
     echo -e "${YELLOW}CMD: sudo lldptool -i $rdma_iface -T -V PFC -c enabled=0,0,0,1,0,0,0,0${NC}"
-    run_ssh_sudo "$mgmt_ip" "echo 'Versa@123!!' | sudo -S lldptool -i $rdma_iface -T -V PFC -c enabled=0,0,0,1,0,0,0,0" > /dev/null 2>&1
+    run_ssh_sudo "$mgmt_ip" "echo '<PASSWORD>' | sudo -S lldptool -i $rdma_iface -T -V PFC -c enabled=0,0,0,1,0,0,0,0" > /dev/null 2>&1
     echo -e "${GREEN}✓${NC}"
 
     echo -e "${CYAN}[5/6]${NC} Configuring LLDP admin status..."
     echo -e "${YELLOW}CMD: sudo lldptool set-lldp -i $rdma_iface adminStatus=rxtx${NC}"
-    run_ssh_sudo "$mgmt_ip" "echo 'Versa@123!!' | sudo -S lldptool set-lldp -i $rdma_iface adminStatus=rxtx" > /dev/null 2>&1
+    run_ssh_sudo "$mgmt_ip" "echo '<PASSWORD>' | sudo -S lldptool set-lldp -i $rdma_iface adminStatus=rxtx" > /dev/null 2>&1
     echo -e "${GREEN}✓${NC}"
 
     echo -e "${CYAN}[6/6]${NC} Enabling hardware pause (ethtool)..."
     echo -e "${YELLOW}CMD: sudo ethtool -A $rdma_iface rx on tx on${NC}"
-    run_ssh_sudo "$mgmt_ip" "echo 'Versa@123!!' | sudo -S ethtool -A $rdma_iface rx on tx on" > /dev/null 2>&1
+    run_ssh_sudo "$mgmt_ip" "echo '<PASSWORD>' | sudo -S ethtool -A $rdma_iface rx on tx on" > /dev/null 2>&1
     echo -e "${GREEN}✓${NC}"
 
     echo ""
     echo -e "${YELLOW}[Verify] Checking configuration:${NC}"
-    run_ssh_sudo "$mgmt_ip" "echo 'Versa@123!!' | sudo -S ethtool -a $rdma_iface" 2>&1 | grep -E "Pause parameters|RX:|TX:" | grep -v "spawn\|password"
+    run_ssh_sudo "$mgmt_ip" "echo '<PASSWORD>' | sudo -S ethtool -a $rdma_iface" 2>&1 | grep -E "Pause parameters|RX:|TX:" | grep -v "spawn\|password"
 
     echo -e "${GREEN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 done

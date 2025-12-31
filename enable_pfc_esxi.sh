@@ -13,7 +13,7 @@ NC='\033[0m'
 
 ESXI_IP="192.168.50.152"
 ESXI_USER="root"
-ESXI_PASS="Versa@123!!"
+ESXI_PASS="<PASSWORD>"
 
 echo -e "${BLUE}========================================${NC}"
 echo "ESXi Host 1 - PFC Configuration"
@@ -61,7 +61,7 @@ echo -e "${YELLOW}Detecting vmnics and enabling PFC...${NC}"
 set timeout 30
 spawn ssh -o StrictHostKeyChecking=no root@192.168.50.152
 expect "Password:"
-send "Versa@123!!\r"
+send "<PASSWORD>\r"
 expect "~]"
 
 # Get list of NICs

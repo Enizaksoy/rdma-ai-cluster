@@ -33,11 +33,11 @@ capture_server() {
 set timeout 60
 spawn ssh -o StrictHostKeyChecking=no versa@${ip}
 expect "password:"
-send "Versa@123!!\r"
+send "<PASSWORD>\r"
 expect "$ "
 send "echo 'Starting capture on ${hostname}...'\r"
 expect "$ "
-send "echo 'Versa@123!!' | sudo -S docker run --rm -v /dev/infiniband:/dev/infiniband --net=host --privileged mellanox/tcpdump-rdma tcpdump -i ${device} -c 100 -nn -v 'udp port 4791' 2>&1 | grep 'tos 0x' | head -50\r"
+send "echo '<PASSWORD>' | sudo -S docker run --rm -v /dev/infiniband:/dev/infiniband --net=host --privileged mellanox/tcpdump-rdma tcpdump -i ${device} -c 100 -nn -v 'udp port 4791' 2>&1 | grep 'tos 0x' | head -50\r"
 expect {
     "tos 0x" {
         exp_continue

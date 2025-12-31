@@ -87,7 +87,7 @@ Results are also displayed in real-time with color coding:
 ## Troubleshooting
 
 ### If Script Fails to Connect:
-1. Verify password is correct: `Versa@123!!`
+1. Verify password is correct: `<PASSWORD>`
 2. Check network connectivity: `ping 192.168.11.152`
 3. Ensure expect is installed: `which expect`
 
@@ -122,7 +122,7 @@ Expected completion time: **2-3 minutes**
 ## Credentials Used
 
 - **Username:** versa
-- **Password:** Versa@123!!
+- **Password:** <PASSWORD>
 - **Method:** SSH with expect (no SSH keys)
 
 ## Servers Tested

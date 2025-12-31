@@ -17,14 +17,14 @@
 | ubunturdma7 | 192.168.20.150 | ens192 | rocep11s0 | Docker 28.2.2 ✅ |
 | ubunturdma8 | 192.168.30.94 | ens192 | rocep11s0 | Docker 28.4.0 ✅ |
 
-**Credentials:** versa / Versa@123!!
+**Credentials:** versa / <PASSWORD>
 
 ---
 
 ## 2. Network Configuration Summary
 
 ### Switch (Cisco Nexus - 192.168.50.229)
-- **User:** admin / Versa@123!!
+- **User:** admin / <PASSWORD>
 - **MTU:** 9216 on all RDMA ports ✅
 - **PFC:** Enabled on CoS 3 (for RoCE) ✅
 - **ECN:** WRED with ECN marking configured ✅

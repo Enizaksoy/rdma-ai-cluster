@@ -27,7 +27,7 @@ SERVERS=(
     "192.168.30.94"   # ubunturdma8
 )
 
-PASSWORD="Versa@123!!"
+PASSWORD="<PASSWORD>"
 LOG_FILE="/mnt/c/Users/eniza/Documents/claudechats/aiml_install_$(date +%Y%m%d_%H%M%S).log"
 
 # Create expect script
@@ -40,7 +40,7 @@ set timeout 300
 spawn ssh -o StrictHostKeyChecking=no versa@$ip "$cmd"
 expect {
     "password:" {
-        send "Versa@123!!\r"
+        send "<PASSWORD>\r"
         exp_continue
     }
     eof

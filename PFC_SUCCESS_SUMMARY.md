@@ -354,15 +354,15 @@ The RDMA network is now **lossless** with:
 ## 🔑 Credentials Reference
 
 **ESXi Hosts:**
-- ESXi Host 1: 192.168.50.152, root / Versa@123!!
-- ESXi Host 2: 192.168.50.32, root / Versa@123!!
+- ESXi Host 1: 192.168.50.152, root / <PASSWORD>
+- ESXi Host 2: 192.168.50.32, root / <PASSWORD>
 
 **Ubuntu Servers:**
-- All servers: versa / Versa@123!!
+- All servers: versa / <PASSWORD>
 
 **Cisco Switch:**
 - IP: 192.168.50.229
-- User: admin / Versa@123!!
+- User: admin / <PASSWORD>
 
 ---
 
