@@ -1,0 +1,55 @@
+# Log files
+*.log
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temp files
+*.tmp
+*.bak
+*~
+
+# Test results
+test_results/
+*.txt
+*.jpg
+*.png
+
+# Captures
+*.pcap
+ecn_captures/
+ecn_pcaps/
+rdma_captures/
+
+# Nexus dashboard data
+nexus_dashboard/
+
+# Compressed files
+*.zip
+*.tar.gz
+
+# Specific exclusions
+files/
+que*.png
+ubuntu_server.jpg
+TEST_topology.jpg
