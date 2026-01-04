@@ -84,8 +84,6 @@ This repository contains comprehensive documentation, configuration scripts, and
 
 ### Main Guides
 
-- **[LinkedIn Post - RDMA Setup](LINKEDIN_POST.md)** - Professional summary with key learnings
-- **[LinkedIn Post - Monitoring](LINKEDIN_POST_MONITORING.md)** - Prometheus/Grafana observability stack
 - **[Technical Writeup](GITHUB_TECHNICAL_WRITEUP.md)** - Comprehensive technical documentation
 
 ### Configuration Guides
@@ -536,3 +534,4 @@ All metrics include labels for granular filtering by host, interface, vmnic, etc
 **Status:** ✅ Production Ready with Full Observability | **Last Updated:** January 2026
 
 **⭐ If you find this useful, please star the repository!**
+
